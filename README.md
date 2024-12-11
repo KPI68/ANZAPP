@@ -26,7 +26,7 @@ where the [library] would be the same as the source. "ANZAPP utility successfull
 To use the utility, type command ANZAPP on the command line.
 
 ### Build the cross-reference
-Now is time to generate the cross-reference for your application, by simply providing the object libraries where programs, modules, files, etc. reside. Under the File tab, select New or Renew. Type a name for your cross-reference then input the libraries in the subsequence SEU, one per line.
+Now is time to generate the cross-reference for your application, by simply providing the object libraries where programs, modules, files, etc. reside. Under the File tab, select New or Renew. Type a name for your cross-reference then input the libraries in the subsequence SEU, one per line. Note that the utility only cover User Lib, not Sys.
 
 ![xref_libs](Image/xref_libs.png)
 
