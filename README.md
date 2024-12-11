@@ -73,6 +73,14 @@ Host pub400
     IdentityFile ~/.ssh/id_rsa  
     IdentitiesOnly yes          
 ```
+
+### Manually populate known_hosts
+It appears that QSH may not provde interaction leading to test SSH with GitHub fails. We may need this step to add git as a host manually.
+```
+ssh -o StrictHostKeyChecking=no git@github.com uptime
+```
+after which we should see host keys in ~/.ssh/known_hosts.
+
 ### Config profile to automate SSH and git
 
 In ~/.profile:
