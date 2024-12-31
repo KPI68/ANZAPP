@@ -49,7 +49,7 @@ Refered:
 While we are at it, we can also select a program and read the source (refer to the function keys listed); or if no selection, the root object is selected by default.
 
 # PS - use SSH for GitHub at QSH
-(Tip: Change job's CCSID to 37 for special characters such as @, ~ to display properly, though the display does not affect usage.)
+Tip: Change job's CCSID to 37 for special characters such as @, ~, [, ] to input and display properly. The "IFS /" executables should have CCSID 1208.
 
 ### Generate pair of keys
 ```
@@ -95,6 +95,8 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa                                  
 ssh -vT git@github.com                    
 ```
+Note: The last statement needs to run once only. We can remove it from .profile and do it separately.
+
 ### Restart QSH
 Should see 
 ```
