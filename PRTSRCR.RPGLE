@@ -1,1 +1,83 @@
-@@@@@ˆ@„†£ƒ£‡™—M\•–]@ƒ£‡™—M\•…¦]@‚•„„‰™M}×ÙãâÙÃÙ}]%@@@@@@\%@@@@@„a‰•ƒ“¤„…@•©——¢k§ƒ–””–•„¢%@@@@@„a‰•ƒ“¤„…@•©——¢k§¢™¥—™–£–%%@@@@@Ä@Ù£¥Ã“—â£™@@@@@@@—™%@@@@@„@@—‡”m•”…@@@@@@@@@@@@@@@@@@@@@ñð%@@@@@Ä@Ù£¥×‡”â£™@@@@@@@—™%@@@@@„@@—‡”m•”…@@@@@@@@@@@@@@@@@@@@@ñð%@@@@@„@@—‡”m££™@@@@@@@@@@@@@@@@@@@@@ñð%%@@@@@Ä@Ç…£â™ƒôÓ–@@@@@@@—™@@@@@@@@@@@@ñð%@@@@@„@@—‡”m¢™ƒ—†@@@@@@@@@@@@@@@@@@@@òð%@@@@@„@@—‡”m££™@@@@@@@@@@@@@@@@@@@@@ñð%@@@@@„@@——¢@@@@@@@@@@@@@@@@@@@@@@@@@ñð@@@@¥“¤…@–—£‰–•¢M\•–—¢¢]%%@@@@@„@—‡”Õ”…@@@@@@@@@¢@@@@@@@@@@@@@ñð%@@@@@„@—‡”Á££™@@@@@@@@@¢@@@@@@@@@@@@@ñð%@@@@@„@˜¤“â™ƒ—†@@@@@@@¢@@@@@@@@@@@@@òð%@@@@@„@¢™ƒ—†Ô‚™@@@@@@@@¢@@@@@@@@@@@@@ñð%@@@@@„@¢™ƒ—†Õ”…@@@@@@@¢@@@@@@@@@@@@@ñð%@@@@@„@¢™ƒ—†Ó‰‚@@@@@@@@¢@@@@@@@@@@@@@ñð%%@@@@@„@×ÙãâÙÃÙ@@@@@@@@@—™%@@@@@„@@—Ø¤“×‡”@@@@@@@@@@@@@@@@@@@@@òð@@@@ƒ–•¢£%@@@@@„@@—â™ƒÓ‰‚@@@@@@@@@@@@@@@@@@@@@@ñð@@@@ƒ–•¢£@–—£‰–•¢M\•–—¢¢]%%@@@@@„@×ÙãâÙÃÙ@@@@@@@@@—‰%@@@@@„@@—Ø¤“×‡”@@@@@@@@@@@@@@@@@@@@@òð@@@@ƒ–•¢£%@@@@@„@@—â™ƒÓ‰‚@@@@@@@@@@@@@@@@@@@@@@ñð@@@@ƒ–•¢£@–—£‰–•¢M\•–—¢¢]%%@@@@@@a†™……%@@@@@@@˜¤“â™ƒ—†@~@—Ø¤“×‡”^%@@@@@@@—‡”Õ”…@~@l¢¤‚¢£M—Ø¤“×‡”z@ñz@ñð]^%%@@@@@@@¢™ƒ—†Ô‚™@~@Ç…£â™ƒôÓ–M˜¤“â™ƒ—†z@—‡”Á££™]^%%@@@@@@@‰†@¢™ƒ—†Ô‚™@~@\‚“•’^%@@@@@@@@@@ƒ““—@§â•„×‡”Ô¢‡M}Æ‰•„‰•‡@—™–‡™”@¢–¤™ƒ…@…™™–™@–™@”¤“£‰`”–„¤“…@N%@@@@@@@@@@@@@@@@@@@@@@@@@@—™–‡™”K}]^%@@@@@@@@@@™…£¤™•^%@@@@@@@…•„‰†^%%@@@@@@@¢™ƒ—†Õ”…@~@l¢¤‚¢£M˜¤“â™ƒ—†z@ñz@ñð]^%@@@@@@@¢™ƒ—†Ó‰‚@~@l¢¤‚¢£M˜¤“â™ƒ—†z@ññ]^%@@@@@@@‰†@l—™”¢@~@ò@•„@—â™ƒÓ‰‚@Ln@\‚“•’^%@@@@@@@@@@¢™ƒ—†Ó‰‚@~@—â™ƒÓ‰‚^%@@@@@@@…•„‰†^%%@@@@@@@§â•„×‡”Ô¢‡M}âÙÃ×Æz@}@N@l£™‰”M¢™ƒ—†Ó‰‚]@N@}a}@N@l£™‰”M¢™ƒ—†Õ”…]@N@}K}]@^%%@@@@@@@‰†@§Å§…Ã”„M}ÖåÙ×ÙãÆ@ÆÉÓÅMØ×ÙÉÕã]@äâÙÄãÁM}N@l£™‰”M—‡”Õ”…]@N@}]}]%@@@@@@@@@@Ln@\‚“•’^%@@@@@@@@@@™…£¤™•^%@@@@@@@…•„‰†^%%@@@@@@@‰†@§Å§…Ã”„M}ÖåÙÄÂÆ@ÆÉÓÅM}@N@l£™‰”M—‡”Õ”…]@N@}]@}%@@@@@@@@@@@@@@@@@N@}ãÖÆÉÓÅM}@N@l£™‰”M¢™ƒ—†Ó‰‚]@N@}a}%@@@@@@@@@@@@@@@@@N@l£™‰”M¢™ƒ—†Õ”…]@N@}]@ÔÂÙM}%@@@@@@@@@@@@@@@@@N@l£™‰”M¢™ƒ—†Ô‚™]@N@}]@ÖåÙâÃÖ×ÅM\ÑÖÂ]}]@Ln@\‚“•’^%@@@@@@@@@@™…£¤™•^%@@@@@@@…•„‰†^%%@@@@@@@¢…“…ƒ£^%@@@@@@@@@@¦ˆ…•@—‡”Á££™@~@}ÃÓ×}@–™@—‡”Á££™@~@}ÃÓÓÅ}^%@@@@@@@@@@@@@@@ƒ““—@Ù£¥Ã“—â£™M—‡”Õ”…]^%@@@@@@@@@@¦ˆ…•@—‡”Á££™@~@}Ù×Ç}@–™@—‡”Á££™@~@}Ù×ÇÓÅ}^%@@@@@@@@@@@@@@@ƒ““—@Ù£¥×‡”â£™M—‡”Õ”…z@—‡”Á££™]^%@@@@@@@@@@–£ˆ…™^%@@@@@@@@@@@@@@@ƒ““—@§â•„×‡”Ô¢‡M}×™–‡™”@“•‡¤‡…@}%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@N@l£™‰”M—‡”Á££™]@N@}@•–£@¢¤——–™£…„K}]^%@@@@@@@…•„¢“^%%@@@@@@@ƒ““—@§Å§…Ã”„M}ÄÓãÖåÙ@ÆÉÓÅM}@N@l£™‰”M—‡”Õ”…]@N@}]@}@N@}ÓåÓM\ÑÖÂ]}]^%@@@@@@@ƒ““—@§Å§…Ã”„M}ÄÓãÖåÙ@ÆÉÓÅMØ×ÙÉÕã]}]^%%@@@@@@@‰†@l—™”¢@~@ñ^%@@@@@@@@@@ƒ““—@§Å§…Ã”„M}æÙÒâ×ÓÆ@âÅÓÅÃãM\ÃäÙÙÅÕã@\ÁÓÓ@\ÁÓÓ@}%@@@@@@@@@@@@@@@@@@@@@N@l£™‰”M—‡”Õ”…]@N@}]}]^%@@@@@@@…•„‰†^%%@@@@@@@™…£¤™•^%@@@@@@a…•„`†™……%
+     h dftactgrp(*no) actgrp(*new) bnddir('PRTSRCR')
+      *
+     d/include anzapps,xcommonds
+     d/include anzapps,xsrvproto
+
+     D RtvClpStr       pr
+     d  pgm_name                     10
+     D RtvPgmStr       pr
+     d  pgm_name                     10
+     d  pgm_attr                     10
+
+     D GetSrc4Lo       pr            10
+     d  pgm_srcpf                    20
+     d  pgm_attr                     10
+     d  apps                         10    value options(*nopass)
+
+     d pgmName         s             10
+     d pgmAttr         s             10
+     d qualSrcpf       s             20
+     d srcpfMbr        s             10
+     d srcpfName       s             10
+     d srcpfLib        s             10
+
+     d PRTSRCR         pr
+     d  pQualPgm                     20    const
+     d  pSrcLib                      10    const options(*nopass)
+
+     d PRTSRCR         pi
+     d  pQualPgm                     20    const
+     d  pSrcLib                      10    const options(*nopass)
+
+      /free
+       qualSrcpf = pQualPgm;
+       pgmName = %subst(pQualPgm: 1: 10);
+
+       srcpfMbr = GetSrc4Lo(qualSrcpf: pgmAttr);
+
+       if srcpfMbr = *blank;
+          callp xSndPgmMsg('Finding program source error or multi-module +
+                          program.');
+          return;
+       endif;
+
+       srcpfName = %subst(qualSrcpf: 1: 10);
+       srcpfLib = %subst(qualSrcpf: 11);
+       if %parms = 2 and pSrcLib <> *blank;
+          srcpfLib = pSrcLib;
+       endif;
+
+       xSndPgmMsg('SRCPF: ' + %trim(srcpfLib) + '/' + %trim(srcpfName) + '.') ;
+
+       if xExeCmd('OVRPRTF FILE(QPRINT) USRDTA('+ %trim(pgmName) + ')')
+          <> *blank;
+          return;
+       endif;
+
+       if xExeCmd('OVRDBF FILE(' + %trim(pgmName) + ') '
+                 + 'TOFILE(' + %trim(srcpfLib) + '/'
+                 + %trim(srcpfName) + ') MBR('
+                 + %trim(srcpfMbr) + ') OVRSCOPE(*JOB)') <> *blank;
+          return;
+       endif;
+
+       select;
+          when pgmAttr = 'CLP' or pgmAttr = 'CLLE';
+               callp RtvClpStr(pgmName);
+          when pgmAttr = 'RPG' or pgmAttr = 'RPGLE';
+               callp RtvPgmStr(pgmName: pgmAttr);
+          other;
+               callp xSndPgmMsg('Program language '
+                             + %trim(pgmAttr) + ' not supported.');
+       endsl;
+
+       callp xExeCmd('DLTOVR FILE(' + %trim(pgmName) + ') ' + 'LVL(*JOB)');
+       callp xExeCmd('DLTOVR FILE(QPRINT)');
+
+       if %parms = 1;
+          callp xExeCmd('WRKSPLF SELECT(*CURRENT *ALL *ALL '
+                     + %trim(pgmName) + ')');
+       endif;
+
+       return;
+      /end-free
