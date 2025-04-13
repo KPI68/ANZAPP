@@ -96,7 +96,7 @@
      d jobi            ds                  likeds(dsJobi0700) based(jobi_ptr)
      d alib_ptr        s               *   inz
      d alib            s                   like(lib) based(alib_ptr)
-     d lb@             s              4b 0
+     d lb§             s              4b 0
       /free
 
        if last_syslib <> *blank and lib = last_syslib;
@@ -111,7 +111,7 @@
        endif;
 
        alib_ptr = %addr(jobi.strLibls);
-       for lb@ = 1 to jobi.nbrSysLibl;
+       for lb§ = 1 to jobi.nbrSysLibl;
            if lib = alib;
               last_syslib = alib;
               return *on;

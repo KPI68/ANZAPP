@@ -3,7 +3,7 @@
      fAnzapp02  if   e           k disk    usropn
      fAnzapp10  if   e           k disk    usropn
       *
-     D GetRoot         pr              *                                        export
+     D GetRoot         pr              *
      d  apps                         10    value
      d  fromObj                      10    value
      d  objLib                       10    value
@@ -13,7 +13,7 @@
      d/include anzapps,xcommonds
      d/include anzapps,xsrvproto
 
-     D NextLevel       pr              *                                        local
+     D NextLevel       pr              *
      d  objstr                       10    value
      d  level1                        1  0 value options(*nopass)
      D InsNode         pr              *
@@ -98,9 +98,9 @@
 
      d arrDbf          s            500    varying inz('')
      d arrPgm          s           5000    varying inz('')
-     d f@              s              3  0 inz(0)
-     d p@              s              5  0
-     d ast@            s              2  0
+     d f§              s              3  0 inz(0)
+     d p§              s              5  0
+     d ast§            s              2  0
      d dbr1stLvl       s               n
 
       /free
@@ -205,10 +205,10 @@
 
                 readp Anzapp10;
                 if not %eof;
-                   ast@ = %scan('*': f1obj);
-                   if ast@ > 1 and
-                      %subst(f1obj: 1: ast@ - 1) = %subst(f0pgm: 1: ast@ - 1)
-                      and %subst(f0pgm: ast@) <> *blank;
+                   ast§ = %scan('*': f1obj);
+                   if ast§ > 1 and
+                      %subst(f1obj: 1: ast§ - 1) = %subst(f0pgm: 1: ast§ - 1)
+                      and %subst(f0pgm: ast§) <> *blank;
                       iter;
                    endif;
                 endif;
@@ -401,7 +401,7 @@
           return *blank;                                      // some dependents
 
        else;
-          if nbrEnt = 0 or pLst = *null;                      // no more dependent
+          if nbrEnt = 0 or pLst = *null;                      // no more depende
              return *loval;
           endif;
 

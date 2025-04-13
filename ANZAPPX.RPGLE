@@ -104,25 +104,25 @@
 
      d mapLibs         s             10    dim(99) static inz(*hival) ascend
      d toLibs          s             10    dim(99) static inz
-     d l@              s              4b 0
+     d l§              s              4b 0
       /free
 
        if mapLibs(1) = *hival;
           open Anzapp20;
-          for l@ = 1 to 99;
+          for l§ = 1 to 99;
               read Anzapp20;
               if %eof;
                  leave;
               endif;
-              mapLibs(l@) = f2map;
-              toLibs(l@) = f2to;
+              mapLibs(l§) = f2map;
+              toLibs(l§) = f2to;
           endfor;
           close Anzapp20;
        endif;
 
-       l@ = %lookup(mapLibTo: mapLibs);
-       if l@ > 0;
-          mapLibTo = toLibs(l@);
+       l§ = %lookup(mapLibTo: mapLibs);
+       if l§ > 0;
+          mapLibTo = toLibs(l§);
        endif;
 
        return;

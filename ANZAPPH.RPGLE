@@ -9,13 +9,13 @@
 
      P DspHelp         b                   export
      d DspHelp         pi
-     d @@              s              9b 0
+     d §§              s              9b 0
       /free
 
        xExeCmd('CRTPF FILE(QTEMP/ANZAPPH) RCDLEN(80)');
        open(e) Helpf;
-       for @@ = 1 to 100;
-           hlp.txt = hlptxt(@@);
+       for §§ = 1 to 100;
+           hlp.txt = hlptxt(§§);
            write Helpf hlp;
        endfor;
        close Helpf;

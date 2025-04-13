@@ -17,7 +17,7 @@
      d bufSeq          s              6  2 dim(21)
      d bufDta          s             64    dim(21)
      d bufLevel        s              2  0 dim(21)
-     d bf@             s              2  0
+     d bf§             s              2  0
      d*
      d LowCas          pr            10
      d  letters                      10
@@ -64,7 +64,7 @@
      c                   clear                   bufSeq
      c                   clear                   bufDta
      c                   clear                   bufLevel
-     c                   z-add     0             bf@
+     c                   z-add     0             bf§
      c                   callp     NextLevel( 0 :*blank :0 :*blank)
      c                   endif
      c
@@ -82,7 +82,7 @@
      d  key                          10    value
      d  keySeq                        6  2 value
      d  keyDta                       64    value
-     d b@              s              2  0
+     d b§              s              2  0
      d keyType         s              1
      d srcKey          s             10
      d srcType         s              1
@@ -93,10 +93,10 @@
      d starAvail       s              1    inz(' ')
       *
      c                   if        level > 0
-     c                   add       1             bf@
-     c                   move      keySeq        bufSeq(bf@)
-     c                   move      keyDta        bufDta(bf@)
-     c                   move      level         bufLevel(bf@)
+     c                   add       1             bf§
+     c                   move      keySeq        bufSeq(bf§)
+     c                   move      keyDta        bufDta(bf§)
+     c                   move      level         bufLevel(bf§)
      c                   eval      curLevel = level + 1
      c                   else
      c                   eval      curLevel = level
@@ -126,7 +126,7 @@
      c
      c                   when      srcType = '='
      c                   sub       1             curLevel
-     c                   if        bf@ > 0
+     c                   if        bf§ > 0
      c                   exsr      AddBuf
      c                   else
      c                   callp     PrtLin(curLevel :srcSeq :srcDta)
@@ -141,7 +141,7 @@
      c                   else
      c*
      c                   sub       1             curLevel
-     c                   if        bf@ = 0
+     c                   if        bf§ = 0
      c                   callp     PrtLin(curLevel :srcSeq :srcDta)
      c                   else
      c                   if        myLine# > betweenSize
@@ -182,37 +182,37 @@
      c                   clear                   bufSeq
      c                   clear                   bufDta
      c                   clear                   bufLevel
-     c                   z-add     0             bf@
+     c                   z-add     0             bf§
      C                   endsr
       *
      C     PrtBuf        begsr
-     c                   do        bf@           b@
-     c                   callp     PrtLin(bufLevel(b@) :bufSeq(b@) :bufDta(b@))
+     c                   do        bf§           b§
+     c                   callp     PrtLin(bufLevel(b§) :bufSeq(b§) :bufDta(b§))
      c                   enddo
      c                   exsr      ClrBuf
      C                   endsr
       *
      C     AddBuf        begsr
-     c                   if        bf@ = 0
+     c                   if        bf§ = 0
      c                   eval      myLine# = 0
      c                   endif
-     c                   if        bf@ < 20
-     c                   add       1             bf@
-     c                   move      srcSeq        bufSeq(bf@)
-     c                   move      srcDta        bufDta(bf@)
-     c                   move      curLevel      bufLevel(bf@)
+     c                   if        bf§ < 20
+     c                   add       1             bf§
+     c                   move      srcSeq        bufSeq(bf§)
+     c                   move      srcDta        bufDta(bf§)
+     c                   move      curLevel      bufLevel(bf§)
      c                   endif
-     c                   if        bf@ >= 20
+     c                   if        bf§ >= 20
      c                   exsr      PrtBuf
      c                   endif
      C                   endsr
       *
      C     RmvBuf        begsr
-     c                   dow       bf@ > 0 and bufLevel(bf@) = curLevel
-     c                   z-add     0             bufSeq(bf@)
-     c                   move      *blank        bufDta(bf@)
-     c                   z-add     0             bufLevel(bf@)
-     c                   sub       1             bf@
+     c                   dow       bf§ > 0 and bufLevel(bf§) = curLevel
+     c                   z-add     0             bufSeq(bf§)
+     c                   move      *blank        bufDta(bf§)
+     c                   z-add     0             bufLevel(bf§)
+     c                   sub       1             bf§
      c                   enddo
      C                   endsr
      p NextLevel       e
@@ -220,19 +220,19 @@
      p KeyWord         b
      d  KeyWord        pi             1
      d   key                         10
-     d  k@             s              2  0
+     d  k§             s              2  0
      d  keyLen         s              1  0
      d
      c
-     c                   do        21            k@
-     c                   movel     lenTypeTab(k@)keyLen
+     c                   do        21            k§
+     c                   movel     lenTypeTab(k§)keyLen
      c                   select
-     c                   when      keyTab(k@) > LowCas(key)
+     c                   when      keyTab(k§) > LowCas(key)
      c                   return    'N'
-     c                   when      keyTab(k@) =
+     c                   when      keyTab(k§) =
      c                             %subst( LowCas(key) :1 :keyLen )
-     c                   eval      key = keyTab(k@)
-     c                   return    %subst(lenTypeTab(k@):2:1)
+     c                   eval      key = keyTab(k§)
+     c                   return    %subst(lenTypeTab(k§):2:1)
      c                   endsl
      c                   enddo
      c                   return    'N'
@@ -243,14 +243,14 @@
      d   level                        2  0
      d   srcSeq                       6  2
      d   srcDta                      64
-     d  ch@            s              3  0
+     d  ch§            s              3  0
      c                   eval      aLine = *blank
      c                   eval      %subst(aLine :1 :2) = %editc(level : '3')
      c
-     c                   eval      ch@ = level * 3 + 4
-     c                   if        ch@ <= 61
-     c                   eval      %subst(aLine :ch@ :7) = %editc(srcSeq:'3')
-     c                   eval      %subst(aLine :ch@+7 :64) = srcDta
+     c                   eval      ch§ = level * 3 + 4
+     c                   if        ch§ <= 61
+     c                   eval      %subst(aLine :ch§ :7) = %editc(srcSeq:'3')
+     c                   eval      %subst(aLine :ch§+7 :64) = srcDta
      c                   else
      c                   eval      aLine = '====> Too many levels!'
      c                   endif
@@ -260,23 +260,23 @@
      p LowCas          b
      d  LowCas         pi            10
      d   letters                     10
-     d  c@             s              2  0
+     d  c§             s              2  0
      d  lowerCase      s             10    inz(*blank)
      d                 ds
      d  ebcdic                 1      2b 0
      d  upper2lower            2      2
-     c                   do        10            c@
+     c                   do        10            c§
      c                   select
-     c                   when      %subst(letters :c@ :1) = ' '
+     c                   when      %subst(letters :c§ :1) = ' '
      c                   leave
-     c                   when      %subst(letters :c@ :1) >= 'A'
+     c                   when      %subst(letters :c§ :1) >= 'A'
      c                   z-add     0             ebcdic
-     c                   eval      upper2lower = %subst(letters :c@ :1)
+     c                   eval      upper2lower = %subst(letters :c§ :1)
      c                   sub       64            ebcdic
-     c                   eval      %subst(lowerCase :c@ :1) = upper2lower
-     c                   when      %subst(letters :c@ :1) <= 'z'
-     c                   eval      %subst(lowerCase :c@ :1) =
-     c                              %subst(letters :c@ :1)
+     c                   eval      %subst(lowerCase :c§ :1) = upper2lower
+     c                   when      %subst(letters :c§ :1) <= 'z'
+     c                   eval      %subst(lowerCase :c§ :1) =
+     c                              %subst(letters :c§ :1)
      c                   endsl
      c                   enddo
      c                   return    lowerCase

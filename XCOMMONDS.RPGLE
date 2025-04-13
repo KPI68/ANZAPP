@@ -80,7 +80,7 @@
      d  szOfEntry              1      4b 0
      d  expDefSmbType         25     25
      d  lenExpDefSmbN         33     36b 0
-     d  epoName               47     61                                         max
+     d  epoName               47     61
      d $GENERR$        c                   'XXX9999'
      d JOBI0700        c                   'JOBI0700'
      d SPLA0100        c                   'SPLA0100'

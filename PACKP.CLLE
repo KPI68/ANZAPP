@@ -1,1 +1,50 @@
-@@@@@@@@@@@@@вгт@@@@@@@@ваытMPифБ]%@@@@@@@@@@@@@дцс@@@@@@@@ЕаыMPифБ]@ЦХвеM\цхаы]@сеуMРПП]%@@@@@@@@@@@@@дцс@@@@@@@@ЕаыMPвжБ]@ЦХвеM\дец]@сеуMС@П]@ЕасДеMЯ]%@@@@@@@@@@@@@дцс@@@@@@@@ЕаыMPцх]@ЦХвеM\цхаы]@сеуMЯ]%@@@@@@@@@@@@@дцс@@@@@@@@ЕаыMPауИавв]@ЦХвеM\цхаы]@сеуMРПП]@ЕасДеM}@}]%@@@@@@@@@@@@@дцс@@@@@@@@ЕаыMPтбы]@ЦХвеM\цхаы]@сеуMЯП]@ЕасДеM}@}]%@@@@@@@@@@@@@дцс@@@@@@@@ЕаыMPсиб]@ЦХвеM\цхаы]@сеуMЯП]%@@@@@@@@@@@@@дцс@@@@@@@@ЕаыMPБыцЦХве]@ЦХвеM\цхаы]@сеуMЯП]%@@@@@@@@@@@@@дцс@@@@@@@@ЕаыMPфыжттбы]@ЦХвеM\цхаы]@сеуMРПП]%@@@@@@@@@@@@@дцс@@@@@@@@ЕаыMPЦжБЦтф]@ЦХвеM\цхаы]@сеуMРПП]%%@@@@@@@@@@@@@тжутБг@@@@@тБгидMцвфПППП]@еГецMгжЦж@цтдсбсMеГиЦ]]%%a\@ы┘■√╔┘@∙╓⌠⌠╒@╖}ПП}@├≥√■@PифБ@\a%сжжвРППz%@@@@@@@@@@@@@иф@@@@@@@@@цжудMPвжБ@\гЦ@РПП]@ЦхеуMгжЦж@цтдсбсMуеГЦ]]%@@@@@@@@@@@@@цхгЕаы@@@@@ЕаыMPцх]@ЕасДеMlББЦMPифБ@PвжБ@Я]]%@@@@@@@@@@@@@иф@@@@@@@@@цжудMPцх@\се@}@}]@ЦхеуMгжЦж@цтдсбсMуеГЦ]]%@@@@@@@@@@@@@цхгЕаы@@@@@ЕаыMPауИавв]@ЕасДеMPауИавв@\ЦцаЦ@Pцх]%@@@@@@@@@@@@@цхгЕаы@@@@@ЕаыMPвжБ]@ЕасДеMPвжБ@N@Я]%@@@@@@@@@@@@@гжЦж@@@@@@@цтдсбсMсжжвРПП]%%уеГЦz%@@@@@@@@@@@@@дБвсур@@@@@жбяMPауИавв]@жДЦвДЦM\выиуЦ]%@@@@@@@@@@@@@тжутБг@@@@@тБгидMцвфаПаЫ]@еГецMдж]%@@@@@@@@@@@@@БудвгттБг@@тБгM}Ц│≥┤┘ё@┴├╒@≈│ё┬@∙√ё@┘╖┴╒ёK}]%@@@@@@@@@@@@@гжЦж@@@@@@@цтдсбсMеГиЦ]%@@@@@@@@@@@@@еуддж%%сжжвz%@@@@@@@@@@@@@иф@@@@@@@@@цжудMPтбы@\еь@}@}]@ЦхеуMыЦЕтбыд@N%@@@@@@@@@@@@@@@@@@@@@@@@@@фисеMауИаввБ]@тбыM\фиыБЦтбы]@ыЦусибMPсиб]@N%@@@@@@@@@@@@@@@@@@@@@@@@@@ыЦутбыMPтбы]@БыцЦХвеMPБыцЦХве]]%@@@@@@@@@@@@@есБе@@@@@@@цтдMыЦЕтбыд@фисеMауИаввБ]@тбыMPтбы@\уеГЦ]@N%@@@@@@@@@@@@@@@@@@@@@@@@@@ыЦусибMPсиб]@ыЦутбыMPтбы]@БыцЦХвеMPБыцЦХве]]%%@@@@@@@@@@@@@иф@@@@@@@@@цжудMPБыцЦХве@\еь@жбясибБ]@ЦхеуMгжЦж@N%@@@@@@@@@@@@@@@@@@@@@@@@@@цтдсбсMсжжв]]%%@@@@@@@@@@@@@цхгЕаы@@@@@ЕаыMPфыжттбы]@ЕасДеM}aьБХБKсибa}@\цаЦ@Pсиб@N%@@@@@@@@@@@@@@@@@@@@@@@@@@\ЦцаЦ@}KсибaауИаввБKфисеa}@\цаЦ@Pтбы@N%@@@@@@@@@@@@@@@@@@@@@@@@@@\ЦцаЦ@}Kтбы}]%@@@@@@@@@@@@@цхгЕаы@@@@@ЕаыMPЦжБЦтф]@ЕасДеMPауИавв@\ЦцаЦ@}a}@\цаЦ@N%@@@@@@@@@@@@@@@@@@@@@@@@@@Pтбы@\ЦцаЦ@}K}@\цаЦ@PБыцЦХве]%@@@@@@@@@@@@@цвХЦжБЦтф@@фыжттбыMPфыжттбы]@ЦжБЦтфMPЦжБЦтф]@N%@@@@@@@@@@@@@@@@@@@@@@@@@@БЦтфжвЦM\ыевсаце]%@@@@@@@@@@@@@гжЦж@@@@@@@цтдсбсMсжжв]%%@@@@@@@@@@@@@БудвгттБг@@тБгM}ауИавв@╓ё┴⌠┴ё╗@╒╓┐┐┘╒╒├╓⌠⌠╗@≈│┐▓┘└K}]%@еГиЦz@@@@@@@еудвгт%
+             PGM        PARM(&IFS)
+             DCL        VAR(&IFS) TYPE(*CHAR) LEN(200)
+             DCL        VAR(&POS) TYPE(*DEC) LEN(3 0) VALUE(1)
+             DCL        VAR(&CH) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&ANZAPP) TYPE(*CHAR) LEN(200) VALUE(' ')
+             DCL        VAR(&MBR) TYPE(*CHAR) LEN(10) VALUE(' ')
+             DCL        VAR(&LIB) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&SRCTYPE) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&FROMMBR) TYPE(*CHAR) LEN(200)
+             DCL        VAR(&TOSTMF) TYPE(*CHAR) LEN(200)
+
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(EXIT))
+
+/* Remove nulls x'00' from &IFS */
+LOOP200:
+             IF         COND(&POS *GT 200) THEN(GOTO CMDLBL(NEXT))
+             CHGVAR     VAR(&CH) VALUE(%SST(&IFS &POS 1))
+             IF         COND(&CH *LE ' ') THEN(GOTO CMDLBL(NEXT))
+             CHGVAR     VAR(&ANZAPP) VALUE(&ANZAPP *TCAT &CH)
+             CHGVAR     VAR(&POS) VALUE(&POS + 1)
+             GOTO       CMDLBL(LOOP200)
+
+NEXT:
+             DSPLNK     OBJ(&ANZAPP) OUTPUT(*PRINT)
+             MONMSG     MSGID(CPFA0A9) EXEC(DO)
+             SNDPGMMSG  MSG('Target ifs path not exist.')
+             GOTO       CMDLBL(EXIT)
+             ENDDO
+
+LOOP:
+             IF         COND(&MBR *EQ ' ') THEN(RTVMBRD +
+                          FILE(ANZAPPS) MBR(*FIRSTMBR) RTNLIB(&LIB) +
+                          RTNMBR(&MBR) SRCTYPE(&SRCTYPE))
+             ELSE       CMD(RTVMBRD FILE(ANZAPPS) MBR(&MBR *NEXT) +
+                          RTNLIB(&LIB) RTNMBR(&MBR) SRCTYPE(&SRCTYPE))
+
+             IF         COND(&SRCTYPE *EQ OBJLIBS) THEN(GOTO +
+                          CMDLBL(LOOP))
+
+             CHGVAR     VAR(&FROMMBR) VALUE('/QSYS.LIB/' *CAT &LIB +
+                          *TCAT '.LIB/ANZAPPS.FILE/' *CAT &MBR +
+                          *TCAT '.MBR')
+             CHGVAR     VAR(&TOSTMF) VALUE(&ANZAPP *TCAT '/' *CAT +
+                          &MBR *TCAT '.' *CAT &SRCTYPE)
+             CPYTOSTMF  FROMMBR(&FROMMBR) TOSTMF(&TOSTMF) +
+                          STMFOPT(*REPLACE) STMFCCSID(*PCASCII)
+             GOTO       CMDLBL(LOOP)
+
+             SNDPGMMSG  MSG('ANZAPP utility successfully packed.')
+ EXIT:       ENDPGM

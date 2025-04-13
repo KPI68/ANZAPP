@@ -1,9 +1,9 @@
      H dftactgrp(*no) actgrp(*new) bnddir('ANZAPPR') debug
 
      fAnzapp90  uf a e           k disk    usropn
-     fAnzappf   cf   e             workstn sfile(@tree: rrn) usropn
-     f                                     sfile(@chcsf: rrna) infds(forevent)
-     f                                     sfile(@sbx: rrnb)
+     fAnzappf   cf   e             workstn sfile(ktree: rrn) usropn
+     f                                     sfile(kchcsf: rrna) infds(forevent)
+     f                                     sfile(ksbx: rrnb)
 
      d/include anzapps,xcommonds
      d/include anzapps,xsrvproto
@@ -20,25 +20,25 @@
      d  fc                           12    options(*omit)
      D qCmd            pr                  extpgm('QCMD')
 
-     D SetupHbch       pr
-     D SetupXref       pr                                                       anzappb
+     D*SetupHbch       pr
+     D SetupXref       pr
      d  apps                         10    value
-     D GetRoot         pr              *                                        anzappu
+     D GetRoot         pr              *
      d  apps                         10    value
      d  fromObj                      10    value
      d  objLib                       10    value
      d  objUsage                     10    value
      D backward        s               n   inz Export
 
-     d ChgLibl         pr             1  0                                      anzappx
+     d ChgLibl         pr             1  0
      d  apps                         10    value options(*nopass)
-     d MappingSrc      pr                                                       anzappx
+     d MappingSrc      pr
      d  mapLibTo                     10
-     d Xref            pr                                                       procptr anzappq
+     d Xref            pr
      d  pLst                           *   value
      d  pLst1                          *   value
      d  what                         10    value
-     D PrtLayout       pr                  extpgm('PRTSRCR')                    prtsrcr
+     D PrtLayout       pr                  extpgm('PRTSRCR')
      d  qualPgm                      20
      d  dummy                         1
      D DspHelp         pr
@@ -51,12 +51,12 @@
      d SetMapSrcLib    pr
      d ChgFileUsage    pr
      d SetAppLst       pr
-     d SelModule       pr            10                                         mod/pfm/*b
+     d SelModule       pr            10
      d  xpos                          3  0 value
      d  ypos                          3  0 value
      d  objtype                      10    value
      d  qualObj                      20    value
-     d  lib                          10                                         modlib/srcpflib
+     d  lib                          10
      d  srcpf                        10    options(*omit)
      d GetObjType      pr            10
      d  objlib                       10
@@ -85,7 +85,7 @@
      d WrkSch          pr              n
      d  phase                         3    value
      d SearchFor       pr
-     d  string                             like(@sbxfor) value options(*nopass)
+     d  string                             like(ksbxfor) value options(*nopass)
      d  pflib                        10    value options(*nopass)
      d  pf                           10    value options(*nopass)
      d  pfm                          10    value options(*nopass)
@@ -107,11 +107,11 @@
      d  csr_col              371    371
 
      d                 ds
-     d @csrc                   2      2
-     d @csr                    1      2b 0 inz
+     d csrc§                   2      2
+     d csr§                    1      2b 0 inz
      d                 ds
-     d @cscc                   2      2
-     d @csc                    1      2b 0 inz
+     d cscc§                   2      2
+     d csc§                    1      2b 0 inz
 
      d appLst          ds                  qualified
      d  names                        10    dim($APPMAX$)
@@ -125,7 +125,7 @@
 
       /free
        if %parms() < 1;
-          SetupHbch();
+       // SetupHbch();
        elseif %subst(entryParm: 1: 1) = '*';
           InterMain();
        else;
@@ -157,49 +157,49 @@
           f9usr = psds.job_user;
        endif;
 
-       dou @mnbfld = 1 and @file = 90;
-          write @msgl;
-          write @mnubr;
-          read @mnubr;
-          @msg = *blank;
+       dou kmnbfld = 1 and kfile = 90;
+          write kmsgl;
+          write kmnubr;
+          read kmnubr;
+          kmsg = *blank;
 
           select;
-             when @mnbfld = 1;
-                read @pulld1;
+             when kmnbfld = 1;
+                read kpulld1;
 
-                if @file = 90; //exit
+                if kfile = 90; //exit
                    leave;
                 endif;
 
-                if @file = 11 and f9apps = *blank;    //renew
-                   @msg = 'Open an application first.';
+                if kfile = 11 and f9apps = *blank;    //renew
+                   kmsg = 'Open an application first.';
                    iter;
                 endif;
 
                 exsr SrPullD1;
 
-             when @mnbfld = 2;
-                read @pulld2;            // up/down
+             when kmnbfld = 2;
+                read kpulld2;            // up/down
 
-                if @link = 0;
+                if klink = 0;
                    iter;
                 endif;
 
                 if f9apps = *blank;
-                   @msg = 'Open an application first.';
+                   kmsg = 'Open an application first.';
                    iter;
                 endif;
 
                 exsr SrPullD2;
 
-             when @mnbfld = 3;
-                read @pulld3;
-                if @about = 1;
+             when kmnbfld = 3;
+                read kpulld3;
+                if kabout = 1;
                    DspHelp();
-                elseif @about = 2;
-                   @ax = @cx3;
-                   @ay = @cy3 + 6;
-                   exfmt @abtwnd;
+                elseif kabout = 2;
+                   kax = kcx3;
+                   kay = kcy3 + 6;
+                   exfmt kabtwnd;
                 endif;
           endsl;
        enddo;
@@ -210,77 +210,77 @@
 
        begsr SrPullD1;
           select;
-             when @file = 1 or @file = 2 and appLst.names(1) = *blank; // new - open
-                callp GetInp(@cx1: @cy1: 'System:');
+             when kfile = 1 or kfile = 2 and appLst.names(1) = *blank; // new -
+                callp GetInp(kcx1: kcy1: 'System:');
 
-                if @input <> *blank;
-                   callp SetAppSys(@input);
+                if kinput <> *blank;
+                   callp SetAppSys(kinput);
                    callp SetAppLst();
                 endif;
 
-             when @file = 2;                                     // open
+             when kfile = 2;                                     // open
                 chain psds.job_user Anzapp90;
                 if %found(Anzapp90);
-                   f9apps = appLst.names(GetChc('  App System  ': @cx1: @cy1:
+                   f9apps = appLst.names(GetChc('  App System  ': kcx1: kcy1:
                                                 %addr(appLst): *null: f9apps));
                    update R90;
                 else;
-                   f9apps = appLst.names(GetChc('  App System  ': @cx1: @cy1:
+                   f9apps = appLst.names(GetChc('  App System  ': kcx1: kcy1:
                                                 %addr(appLst): *null:
                                                 appLst.names(1)));
                    write R90;
                 endif;
 
-             when @file = 11;                                    // renew
+             when kfile = 11;                                    // renew
                 callp SetAppSys(f9apps:
                                 appLst.descs(%lookup(f9apps: appLst.names)));
 
-             when @file = 21;                                    // set exemption
+             when kfile = 21;                                    // set exemptio
                 callp SetExempt();
 
-             when @file = 22;
+             when kfile = 22;
                   SetMapSrcLib();
 
-             when @file = 31;
+             when kfile = 31;
                 callp ChgFileUsage();
           endsl;
        endsr;
 
        begsr SrPullD2;
-          if @link = 1;
+          if klink = 1;
              backward = *off;
-          elseif @link = 2;
+          elseif klink = 2;
              backward = *on;
           endif;
           exsr LinkUp;
        endsr;
 
        begsr LinkUp;
-          dou *inKL or @psbtfd = 1;  //CA12
-              if @root = *blank;
-                 callp GetInp(@cx2: @cy2: 'From:');
-                 if @input = *blank;
+          dou *inKL or kpsbtfd = 1;  //CA12
+              if kroot = *blank;
+                 callp GetInp(kcx2: kcy2: 'From:');
+                 if kinput = *blank;
                     leave;
                  endif;
 
-                 @root = @input;
+                 kroot = kinput;
 
-                 if @root = '*VARIABLE';
-                    @roott = 'P';
+                 if kroot = '*VARIABLE';
+                    kroott = 'P';
                  endif;
 
                  if f9apps = 'HUB8_BCH';
-                    @roott = '*HUBBCH';
+                    kroott = '*HUBBCH';
                  endif;
 
-                 if @roott = *blank;
-                    @roott = GetObjType(@rootl: @root: @wx: @wy + 10);
-                    if @roott = *blank;
-                       @msg = %trim(@root) + ' with type *FILE/*PGM/*SRVPGM/*D+
+                 if kroott = *blank;
+                    kroott = GetObjType(krootl: kroot: kwx: kwy + 10);
+                    if kroott = *blank;
+                       kmsg = %trim(kroot) + ' with type *FILE/*PGM/*SRVPGM/*D+
                               TAARA not found.';
                        leave;
-                    elseif @roott = '*FILE' and backward;
-                       @msg = %trim(@root) + ' is a file, not applicable to +
+                    elseif kroott = '*FILE' and backward;
+                       kmsg = %trim(kroot) + ' is a file, not applicable to +
                               program references.';
                        leave;
                     endif;
@@ -289,58 +289,58 @@
               endif;
 
               *in91 = *on;
-              write @treec;
+              write ktreec;
               *in91 = *off;
-              @msg = *blank;
+              kmsg = *blank;
               rrn = 0;
 
-              clear @brchs;
+              clear kbrchs;
               clear arrTree;
 
-              if (@roott = '*FILE' or backward) and
-                 ToLevel(GetRoot(f9apps: @root: @rootl: entryParm): level) = 0
-                 or @roott <> '*FILE' and not backward and
-                 ToLevel(GetRoot(f9apps: @root: @rootl: @roott): level) = 0;
+              if (kroott = '*FILE' or backward) and
+                 ToLevel(GetRoot(f9apps: kroot: krootl: entryParm): level) = 0
+                 or kroott <> '*FILE' and not backward and
+                 ToLevel(GetRoot(f9apps: kroot: krootl: kroott): level) = 0;
                  totRrn = rrn;
                  if rrn > 0;
-                    if @frlsp = *blank;
-                       @csrp = 1;
+                    if kfrlsp = *blank;
+                       kcsrp = 1;
                     else;
-                       @csrp = GetRrn(@frlsp);
+                       kcsrp = GetRrn(kfrlsp);
                     endif;
                  else;
                     rrn = 1;
-                    clear @brchs;
-                    write @tree;
+                    clear kbrchs;
+                    write ktree;
                  endif;
               endif;
 
               callp WrkObj('*RESETSEL');
 
-              dou *inKL or @psbtfd = 1; //CA12
-                  if @csrp <= 0 or @csrp > totRrn;
-                    @csrp = 1;
+              dou *inKL or kpsbtfd = 1; //CA12
+                  if kcsrp <= 0 or kcsrp > totRrn;
+                    kcsrp = 1;
                   endif;
                   if totRrn > 0;
-                     @frlsp = arrTree(@csrp);             //show the good one
+                     kfrlsp = arrTree(kcsrp);             //show the good one
                   endif;
 
-                 write @msgl;
+                 write kmsgl;
 
                  if duringSearch;
-                    exfmt @sbxc;
+                    exfmt ksbxc;
                  else;
-                    exfmt @treec;
+                    exfmt ktreec;
 
-                    @csrp = @csrg;
+                    kcsrp = kcsrg;
                     if totRrn > 0;
-                       @frlsp = arrTree(@csrp);             //save for --> and <--
+                       kfrlsp = arrTree(kcsrp);             //save for --> and <
                     endif;
                  endif;
 
-                 @csrc = csr_row;
-                 @cscc = csr_col;
-                 @msg = *blank;
+                 csrc§ = csr_row;
+                 cscc§ = csr_col;
+                 kmsg = *blank;
 
                  select;
                  when duringSearch;
@@ -349,56 +349,56 @@
                           *inKL = *off;
                       elseif *inKA;     //F1
                           duringSearch = WrkSch('CFM');
-                      elseif mouse_event = x'f1';                  //mouse click or enter
+                      elseif mouse_event = x'f1';                  //mouse click
                           duringSearch = WrkSch('SEL');
                       endif;
 
-                 when *inKL or @psbtfd = 1;   //F12
+                 when *inKL or kpsbtfd = 1;   //F12
                       leave;
 
-                 when *inKE or @psbtfd = 2;   //F5
+                 when *inKE or kpsbtfd = 2;   //F5
                       level = 1;
-                      clear @root;
-                      clear @roott;
-                      clear @frlsp;
+                      clear kroot;
+                      clear kroott;
+                      clear kfrlsp;
                       leave;
 
-                 when (*inKQ or @psbtfd = 3) and totRrn > 0;                  //F16
+                 when (*inKQ or kpsbtfd = 3) and totRrn > 0;                  //
                       callp WrkObj('*FIND');
 
-                 when (*inKT or @psbtfd = 4) and level > 1;     //F19
+                 when (*inKT or kpsbtfd = 4) and level > 1;     //F19
                       level = level - 1;
                       leave;
 
-                 when (*inKU or @psbtfd = 9) and level < 11 and totRrn > 0;   //F20
+                 when (*inKU or kpsbtfd = 9) and level < 11 and totRrn > 0;   //
                       level = level + 1;
                       leave;
 
-                 when *inKV or @psbtfd = 5;               //F21
+                 when *inKV or kpsbtfd = 5;               //F21
                       callp qCmd();
 
-                 when *inKW or @psbtfd = 6;               //F22
+                 when *inKW or kpsbtfd = 6;               //F22
                       callp WrkObj('*LAYOUT');
 
-                 when *inKX or @psbtfd = 7;               //F23
+                 when *inKX or kpsbtfd = 7;               //F23
                       callp WrkObj('*DISPLAY');
 
-                 when *inKY or @psbtfd = 8;               //F24
+                 when *inKY or kpsbtfd = 8;               //F24
                       callp WrkObj('*SOURCE');
 
-                 when (*inKR or @psbtfd = 10) and totRrn > 0;     //F17
+                 when (*inKR or kpsbtfd = 10) and totRrn > 0;     //F17
                       duringSearch = WrkSch('INZ');
 
-                 when mouse_event = x'F1' and                     //mouse click or Enter
-                      @csr > 3 and @csc > 1 and @csc < 130 and totRrn > 0;
+                 when mouse_event = x'F1' and                     //mouse click
+                      csr§ > 3 and csc§ > 1 and csc§ < 130 and totRrn > 0;
                       WrkObj('*SELECT');
                  endsl;
               enddo;
           enddo;
 
-          clear @root;
-          clear @roott;
-          clear @frlsp;
+          clear kroot;
+          clear kroott;
+          clear kfrlsp;
        endsr;
       /end-free
      P InterMain       e
@@ -417,23 +417,23 @@
           %parms <> 2 and
           xExeCmd('?STRSEU SRCFILE(ANZAPPS) SRCMBR(' +
                   %trim(apps) + ') TYPE(OBJLIBS) OPTION(2)') <> *blank;
-          @msg = 'Edit object libraries error.';
+          kmsg = 'Edit object libraries error.';
           return;
        endif;
 
-       GetInp(@cx1: @cy1: 'Sure?');
-       if @input <> 'YES';
+       GetInp(kcx1: kcy1: 'Sure?');
+       if kinput <> 'YES';
           return;
        endif;
 
        if apps = 'HUB8_BCH';
           if xExeCmd('SBMJOB CMD(CALL PGM(ANZAPPR)) +
                       JOB(ANZAPP) JOBQ(QBATCH)') <> *blank;
-             @msg = 'Anzapp job submit error.';
+             kmsg = 'Anzapp job submit error.';
              return;
           endif;
 
-          @msg = 'Job submitted to set up Xreference for the application, +
+          kmsg = 'Job submitted to set up Xreference for the application, +
                  please check job log when finished.';
           return;
        endif;
@@ -441,11 +441,11 @@
        if xExeCmd('SBMJOB CMD(CALL PGM(ANZAPPR) PARM(' +
                   x'7d' + %trim(apps) + x'7d' +
                   ')) JOB(ANZAPP) JOBQ(QBATCH)') <> *blank;
-          @msg = 'Anzapp job submit error.';
+          kmsg = 'Anzapp job submit error.';
           return;
        endif;
 
-       @msg = 'Job submitted to set up Xreference for the application, +
+       kmsg = 'Job submitted to set up Xreference for the application, +
               please check job log when finished.';
 
        return;
@@ -456,9 +456,9 @@
      d SetExempt       pi
       /free
        if xExeCmd('UPDDTA FILE(ANZAPP10)') <> *blank;
-          @msg = 'Set up exempted object fail.';
+          kmsg = 'Set up exempted object fail.';
        else;
-          @msg = 'Restart the command to apply the new setting.';
+          kmsg = 'Restart the command to apply the new setting.';
        endif;
 
        return;
@@ -469,9 +469,9 @@
      d SetMapSrcLib    pi
       /free
        if xExeCmd('UPDDTA FILE(ANZAPP20)') <> *blank;
-          @msg = 'Set up mapping source library fail.';
+          kmsg = 'Set up mapping source library fail.';
        else;
-          @msg = 'Restart the command to apply the new setting.';
+          kmsg = 'Restart the command to apply the new setting.';
        endif;
 
        return;
@@ -481,8 +481,8 @@
      P SetAppLst       b
      d SetAppLst       pi
 
-     d al@             s              3  0
-     d et@             s              3  0
+     d alk             s              3  0
+     d etk             s              3  0
      d nbrEntry        s              9b 0
      d szEntry         s              9b 0
      d lst             ds                  likeds(dsMbrl0200) based(lstPtr)
@@ -496,12 +496,12 @@
 
        clear appLst;
 
-       al@ = 0;
-       for et@ = 1 to nbrEntry;
+       alk = 0;
+       for etk = 1 to nbrEntry;
           if lst.type = 'OBJLIBS';
-             al@ = al@ + 1;
-             appLst.Names(al@) = lst.name;
-             appLst.Descs(al@) = lst.text;
+             alk = alk + 1;
+             appLst.Names(alk) = lst.name;
+             appLst.Descs(alk) = lst.text;
           endif;
           lstPtr = lstPtr + szEntry;
        endfor;
@@ -519,7 +519,7 @@
        selLst(1) = '*CHANGE';
        selLst(2) = '*ANY';
        selLst(3) = '*ADDONLY';
-       rtnChc = GetChc('  File Usage  ': @cx3: @cy3:
+       rtnChc = GetChc('  File Usage  ': kcx3: kcy3:
                        %addr(selLst): *null: entryParm);
        if rtnChc <> 0;
           entryParm = selLst(rtnChc);
@@ -529,12 +529,12 @@
      P ChgFileUsage    e
 
      P SelModule       b
-     d SelModule       pi            10                                         mod/srcpfmbr
+     d SelModule       pi            10
      d  xpos                          3  0 value
      d  ypos                          3  0 value
      d  objtype                      10    value
      d  qualObj                      20    value
-     d  lib                          10                                         modlib/srcpflib
+     d  lib                          10
      d  srcpf                        10    options(*omit)
 
      d modLst          s             10    dim(1000)
@@ -543,14 +543,14 @@
      d spgInf          ds                  likeds(dsSPGI0100)
      d lstPtr          s               *
      d savLstPtr       s               *
-     d lst             ds                  likeds(dsPGML0100) based(ptr@)
-     d ptr@            s               *
-     d savLst          ds                  likeds(dsPGML0100) based(savPtr@)
-     d savPtr@         s               *
+     d lst             ds                  likeds(dsPGML0100) based(ptrk)
+     d ptrk            s               *
+     d savLst          ds                  likeds(dsPGML0100) based(savPtrk)
+     d savPtrk         s               *
      d nEnt            s              9b 0
      d szEnt           s              9b 0
-     d ent@            s              9b 0
-     d rtnMod@         s              5  0
+     d entk            s              9b 0
+     d rtnModk         s              5  0
 
       /free
        if objType = '*PGM';
@@ -574,14 +574,14 @@
              return *blank;
           endif;
 
-          ptr@ = lstPtr;
+          ptrk = lstPtr;
 
           if nEnt = 1 and %addr(srcpf) = *null and
              lst.modl = 'QTEMP';
              return *blank;
           endif;
 
-          if nEnt = 1 and %addr(srcpf) <> *null;       //only one module, return source
+          if nEnt = 1 and %addr(srcpf) <> *null;       //only one module, return
              srcpf = lst.srcpf;
              lib = lst.srcpfl;
              return lst.srcpfm;
@@ -594,10 +594,10 @@
           clear modLst;                                //ILE, typeofpgm=B
           clear libLst;
 
-          for ent@ = 1 to nEnt;
-              modLst(ent@) = lst.mod;
-              libLst(ent@) = lst.modl;
-              ptr@ = ptr@ + szEnt;
+          for entk = 1 to nEnt;
+              modLst(entk) = lst.mod;
+              libLst(entk) = lst.modl;
+              ptrk = ptrk + szEnt;
           endfor;
 
        elseif objType = '*SRVPGM';
@@ -611,56 +611,56 @@
              return *blank;
           endif;
 
-          ptr@ = lstPtr;
+          ptrk = lstPtr;
           clear modLst;
           clear libLst;
-          ent@ = 0;
+          entk = 0;
 
           if %addr(srcpf) <> *null;
-             ent@ = ent@ + 1;
-             modLst(ent@) = 'Export';
-             libLst(ent@) = 'Source';
+             entk = entk + 1;
+             modLst(entk) = 'Export';
+             libLst(entk) = 'Source';
           endif;
 
-          for ent@ = 1 to nEnt;
-              modLst(ent@) = lst.mod;
-              libLst(ent@) = lst.modl;
-              ptr@ = ptr@ + szEnt;
+          for entk = 1 to nEnt;
+              modLst(entk) = lst.mod;
+              libLst(entk) = lst.modl;
+              ptrk = ptrk + szEnt;
           endfor;
        endif;
 
        exsr SetSavLst;
 
-       rtnMod@ = GetChc(' Sel Modules  ': xpos: ypos:
+       rtnModk = GetChc(' Sel Modules  ': xpos: ypos:
                         %addr(modLst): %addr(libLst): *blank:
                         'ModExtXref');
 
-       if rtnMod@ = 0;
+       if rtnModk = 0;
           exsr RlsSavLst;
           return *blank;
        endif;
 
        if %addr(srcpf) = *null;
-          lib = libLst(rtnMod@);
+          lib = libLst(rtnModk);
           exsr RlsSavLst;
-          return modLst(rtnMod@);
+          return modLst(rtnModk);
        endif;
 
-       //if objType = '*SRVPGM' and rtnMod@ = 1;
+       //if objType = '*SRVPGM' and rtnModk = 1;
        //   srcpf = spgInf.srcpf;
        //   lib = spgInf.srcpfl;
        //   exsr RlsSavLst;
        //   return spgInf.srcpfm;
        //endif;
 
-       ptr@ = savLstPtr;
-       for ent@ = 1 to nEnt;
-           if lst.mod = modLst(rtnMod@);
+       ptrk = savLstPtr;
+       for entk = 1 to nEnt;
+           if lst.mod = modLst(rtnModk);
               srcpf = lst.srcpf;
               lib = lst.srcpfl;
               return lst.srcpfm;
            endif;
-           ptr@ = ptr@ + szEnt;
+           ptrk = ptrk + szEnt;
        endfor;
 
        exsr RlsSavLst;
@@ -668,12 +668,12 @@
 
        begsr SetSavLst;
           savLstPtr = %alloc(nEnt * szEnt);
-          ptr@ = lstPtr;
-          savPtr@ = savLstPtr;
-          for ent@ = 1 to nEnt;
+          ptrk = lstPtr;
+          savPtrk = savLstPtr;
+          for entk = 1 to nEnt;
               savLst = lst;
-              ptr@ = ptr@ + szEnt;
-              savPtr@ = savPtr@ + szEnt;
+              ptrk = ptrk + szEnt;
+              savPtrk = savPtrk + szEnt;
           endfor;
        endsr;
        begsr RlsSavLst;
@@ -691,9 +691,9 @@
 
      d typesGot        s             10    dim(86)
      d libsGot         s             10    dim(86)
-     d rt@             s              2  0
-     d ot@             s              2  0
-     d dft@            s              2  0 inz
+     d rtk             s              2  0
+     d otk             s              2  0
+     d dftk            s              2  0 inz
      d rtnChc          s              5  0 inz
      d objLst          ds                  likeds(dsObjl0100) based(lstPtr)
      d lstPtr          s               *
@@ -714,10 +714,10 @@
 
        if lstPtr = *null or nbrEnt <= 0;
           callp GetInp(xpos: ypos: 'Lib:');
-          if @input = *blank;
+          if kinput = *blank;
              return *blank;
           endif;
-          lstPtr = xLstObj(nbrEnt: szEnt: OBJL0100: obj + @input);
+          lstPtr = xLstObj(nbrEnt: szEnt: OBJL0100: obj + kinput);
           if lstPtr = *null or nbrEnt <= 0;
              return *blank;
           endif;
@@ -727,34 +727,34 @@
        clear typesGot;
        clear libsGot;
 
-       rt@ = 0;
+       rtk = 0;
        for nbrEnt = nbrEnt downto 1;
-          ot@ = %lookup(objLst.type: objTypes);
-          if ot@ > 0;
-             if dft@ = 0 or ot@ < dft@;
-                dft@ = ot@;
+          otk = %lookup(objLst.type: objTypes);
+          if otk > 0;
+             if dftk = 0 or otk < dftk;
+                dftk = otk;
              endif;
-             rt@ = rt@ + 1;
-             if rt@ > 40;
+             rtk = rtk + 1;
+             if rtk > 40;
                 return *blank;
              endif;
-             typesGot(rt@) = objLst.type;
-             libsGot(rt@) = objLst.lib;
+             typesGot(rtk) = objLst.type;
+             libsGot(rtk) = objLst.lib;
           endif;
           lstPtr = lstPtr + szEnt;
        endfor;
 
-       if rt@ = 0;
+       if rtk = 0;
           return *blank;
        endif;
 
-       if rt@ = 1;
+       if rtk = 1;
           objlib = libsGot(1);
           return typesGot(1);
        endif;
 
        rtnChc = GetChc('Dup ' + %trim(obj): xpos: ypos:
-                       %addr(typesGot): %addr(libsGot): objTypes(dft@));
+                       %addr(typesGot): %addr(libsGot): objTypes(dftk));
 
        objlib = libsGot(rtnChc);
        return typesGot(rtnChc);
@@ -768,19 +768,19 @@
      d  prompt                        7    value
       /free
        if xpos + 2 + 2 > 24;
-          @wx = 24 - 2 - 2;
+          kwx = 24 - 2 - 2;
        else;
-          @wx = xpos;
+          kwx = xpos;
        endif;
 
        if ypos + 6 + 18 + 4 > 132;
-          @wy = 132 - 18 - 4 - 6;
+          kwy = 132 - 18 - 4 - 6;
        else;
-          @wy = ypos + 6;
+          kwy = ypos + 6;
        endif;
 
-       @prompt = prompt;
-       exfmt @inpwnd;
+       kprompt = prompt;
+       exfmt kinpwnd;
        return;
       /end-free
      P GetInp          e
@@ -799,20 +799,20 @@
      d chcPtr          s               *
      d chc1            s             10    based(chcPtr1)
      d chcPtr1         s               *   inz(*null)
-     d dft@            s              5  0 inz
+     d dftk            s              5  0 inz
      d pLst            s               *
      d pLst1           s               *
 
       /free
        *in27 = *on;
-       write @chcsfc;
+       write kchcsfc;
        rrna = 0;
 
        if %parms = 7;
           rrna = rrna + 1;
-          @chctx = 'Extern X-reference';
-          @scctl = 0;
-          write @chcsf;
+          kchctx = 'Extern X-reference';
+          kscctl = 0;
+          write kchcsf;
        endif;
 
        chcPtr = fromLst;
@@ -821,21 +821,21 @@
        dow chc <> *blank;
           *in27 = *off;
           rrna = rrna + 1;
-          @chctx = chc;
+          kchctx = chc;
           if chcPtr1 <> *null;
-             %subst(@chctx: 11: 10) = chc1;
+             %subst(kchctx: 11: 10) = chc1;
           endif;
-          @scctl = 0;
-          if defaultChc <> *blank and dft@ = 0 and defaultChc = chc;
-             @scctl = 1;
+          kscctl = 0;
+          if defaultChc <> *blank and dftk = 0 and defaultChc = chc;
+             kscctl = 1;
              if %parms = 7;
-                dft@ = rrna - 1;
+                dftk = rrna - 1;
              else;
-                dft@ = rrna;
+                dftk = rrna;
              endif;
           endif;
 
-          write @chcsf;
+          write kchcsf;
           chcPtr = chcPtr + 10;
           if chcPtr1 <> *null;
              chcPtr1 = chcPtr1 + 10;
@@ -847,28 +847,28 @@
        endif;
 
        if xpos + 7 + 2 + 1 > 24;
-          @ox = 24 - 7 - 2 - 1;
+          kox = 24 - 7 - 2 - 1;
        else;
-          @ox = xpos + 1;
+          kox = xpos + 1;
        endif;
 
        if ypos + 26 + 4 + 6 > 132;
-          @oy = 132 - 26 - 4 - 6;
+          koy = 132 - 26 - 4 - 6;
        else;
-          @oy = ypos + 6;
+          koy = ypos + 6;
        endif;
-       @chcs = rrna;
+       kchcs = rrna;
 
-       @titl = title;
+       ktitl = title;
        dou 1 = 2;
-           exfmt @chcsfc;
+           exfmt kchcsfc;
 
-           dou %eof or @scctl = 1;
-               readc @chcsf;
+           dou %eof or kscctl = 1;
+               readc kchcsf;
            enddo;
 
            if %eof;
-              return dft@;
+              return dftk;
            endif;
 
            if %parms < 7;
@@ -911,12 +911,12 @@
              return 0;
           endif;
 
-          %subst(@brchs: fromPos: 10) = node.obj;
+          %subst(kbrchs: fromPos: 10) = node.obj;
 
           pNode = levelLink;
 
           if node.usage > 0;
-             @brchs = %trimr(@brchs) + ',' + %trim(%editc(node.usage: '3'));
+             kbrchs = %trimr(kbrchs) + ',' + %trim(%editc(node.usage: '3'));
              levelLen = 13;
           endif;
 
@@ -929,16 +929,16 @@
           else;
              rrn = rrn + 1;
 
-             ch1st = %check(' ': @brchs);
+             ch1st = %check(' ': kbrchs);
              if ch1st > 2;
                 arrTree(rrn) = %subst(arrTree(rrn - 1): 1: ch1st - 1) +
-                               %subst(@brchs: ch1st);
+                               %subst(kbrchs: ch1st);
              else;
-                arrTree(rrn) = @brchs;
+                arrTree(rrn) = kbrchs;
              endif;
 
-             write @tree;
-             clear @brchs;
+             write ktree;
+             clear kbrchs;
           endif;
 
           levelLink = node.lvllnk;
@@ -953,19 +953,19 @@
      d GetRrn          pi             5  0
      d  string                      128    value
 
-     d r@              s              5  0
+     d rk              s              5  0
 
       /free
-       for r@ = 1;
-           if arrTree(r@) = *blank;
+       for rk = 1;
+           if arrTree(rk) = *blank;
               leave;
            endif;
 
-           if string = arrTree(r@) or
-              %len(%trim(string)) < %len(%trim(arrTree(r@))) and
-              %scan(%trim(string): arrTree(r@)) = 2 or
-              %scan(%trim(arrTree(r@)): string) = 2;
-              return r@;
+           if string = arrTree(rk) or
+              %len(%trim(string)) < %len(%trim(arrTree(rk))) and
+              %scan(%trim(string): arrTree(rk)) = 2 or
+              %scan(%trim(arrTree(rk)): string) = 2;
+              return rk;
            endif;
        endfor;
        return 0;
@@ -982,9 +982,9 @@
      d layouts         s             26    dim(100) static inz(*hival) ascend
 
      d topRrn          s              5  0
-     d lo@             s              3  0
-     d bl@             s              3  0
-     d br@             s              3  0
+     d lok             s              3  0
+     d blk             s              3  0
+     d brk             s              3  0
 
      d objt            s             10
      d objl            s             10
@@ -1000,19 +1000,19 @@
 
       /free
        if %parms = 0;
-          for lo@ = 1 to 100;
-              if layouts(lo@) = *hival;
+          for lok = 1 to 100;
+              if layouts(lok) = *hival;
                  leave;
               endif;
               callp xExeCmd('DLTSPLF FILE(QPRINT) SPLNBR(' +
-                            %subst(layouts(lo@): 21) + ')');
+                            %subst(layouts(lok): 21) + ')');
           endfor;
           return;
        endif;
 
        select;
           when toDo = '*RESETSEL';
-               selObj = @root;
+               selObj = kroot;
           when toDo = '*FIND';
                exsr ToFind;
           when toDo = '*LAYOUT';
@@ -1028,18 +1028,18 @@
        return;
 
        begsr DspSource;
-          if selObj = @root;
-             objt = @roott;
-             objl = @rootl;
+          if selObj = kroot;
+             objt = kroott;
+             objl = krootl;
           else;
-             objt = GetObjType(objl: selObj: @csr: @csc + 10);
+             objt = GetObjType(objl: selObj: csr§: csc§ + 10);
           endif;
 
           if objt <> '*PGM' and objt <> '*SRVPGM';
              return;
           endif;
 
-          srcpfm = SelModule(@csr: @csc + 10: objt: selObj + objl:
+          srcpfm = SelModule(csr§: csc§ + 10: objt: selObj + objl:
                              srcpfl: srcpf);
 
           if srcpfm = *blank;
@@ -1052,15 +1052,15 @@
        endsr;
 
        begsr DspObject;
-          if selObj = @root;
-             objt = @roott;
-             objl = @rootl;
+          if selObj = kroot;
+             objt = kroott;
+             objl = krootl;
           else;
-             objt = GetObjType(objl: selObj: @csr: @csc + 10);
+             objt = GetObjType(objl: selObj: csr§: csc§ + 10);
           endif;
 
           if objt = '*PGM' or objt = '*SRVPGM';
-             mod = SelModule(@csr: @csc + 10: objt: selObj + objl:
+             mod = SelModule(csr§: csc§ + 10: objt: selObj + objl:
                              modl: *omit);
              if mod <> *blank;
                 callp xExeCmd('DSPMOD MODULE(' +
@@ -1086,44 +1086,44 @@
        endsr;
 
        begsr DspLayout;
-          if selObj = @root;
-             objt = @roott;
-             objl = @rootl;
+          if selObj = kroot;
+             objt = kroott;
+             objl = krootl;
           else;
-             objt = GetObjType(objl: selObj: @csr: @csc + 10);
+             objt = GetObjType(objl: selObj: csr§: csc§ + 10);
           endif;
 
           if objt = '*FILE';
              xExeCmd('DSPFFD FILE(' + %trim(objl) + '/' + %trim(selObj) + ')');
 
           elseif objt = '*PGM';
-             lo@ = %lookupge(selObj + objl: layouts);
-             if layouts(lo@) = *hival or
-                %subst(layouts(lo@): 1: 20) <> selObj + objl;
+             lok = %lookupge(selObj + objl: layouts);
+             if layouts(lok) = *hival or
+                %subst(layouts(lok): 1: 20) <> selObj + objl;
                 exsr FndSpace;
                 exsr InsLayout;
              endif;
 
              if xExeCmd('DSPSPLF FILE(QPRINT) SPLNBR(' +
-                        %subst(layouts(lo@): 21) + ')') <> *blank;
+                        %subst(layouts(lok): 21) + ')') <> *blank;
                 exsr InsLayout;
                 if xExeCmd('DSPSPLF FILE(QPRINT) SPLNBR(' +
-                           %subst(layouts(lo@): 21) + ')') <> *blank;
-                   @msg = 'Display spool file failed.';
+                           %subst(layouts(lok): 21) + ')') <> *blank;
+                   kmsg = 'Display spool file failed.';
                 endif;
              endif;
           endif;
        endsr;
 
        begsr FndSpace;
-             lo@ = %lookup(*hival: layouts);
-             if lo@ = 0;
+             lok = %lookup(*hival: layouts);
+             if lok = 0;
                 if xExeCmd('DLTSPLF FILE(QPRINT) SPLNBR(' +
                            %subst(layouts(1): 21) + ')') <> *blank;
-                   @msg = 'Delete spool file 1 failed.';
+                   kmsg = 'Delete spool file 1 failed.';
                    return;
                 endif;
-                lo@ = 1;
+                lok = 1;
              endif;
        endsr;
 
@@ -1133,61 +1133,61 @@
 
              if xRtvSplfA(%addr(splfAttr): %size(splfAttr): SPLA0100: 'QPRINT')
                 <> *blank or splfAttr.usrData <> selObj;
-                @msg = 'Print source failed.';
+                kmsg = 'Print source failed.';
                 return;
              endif;
 
              if splfAttr.splfNbr = 0;
-                @msg = 'Print source failed.';
+                kmsg = 'Print source failed.';
                 return;
              endif;
 
-             layouts(lo@) = selObj + objl +
+             layouts(lok) = selObj + objl +
                             %editc(%dec(splfAttr.splfNbr: 6: 0): '3');
 
              sorta layouts;
-             lo@ = %lookupge(selObj + objl: layouts);
+             lok = %lookupge(selObj + objl: layouts);
        endsr;
 
        begsr ToSel;
-          rrn = @csr - 3 + @csrp - 1;
-          chain rrn @tree;
-          if %subst(@brchs: @csc - 1: 1) <> *blank;
+          rrn = csr§ - 3 + kcsrp - 1;
+          chain rrn ktree;
+          if %subst(kbrchs: csc§ - 1: 1) <> *blank;
              exsr ResetScreen;
 
-             rrn = @csr - 3 + topRrn - 1;
-             chain rrn @tree;
-             for bl@ = @csc - 1 downto 1;
-                 if %subst(@brchs: bl@: 1) = *blank;
+             rrn = csr§ - 3 + topRrn - 1;
+             chain rrn ktree;
+             for blk = csc§ - 1 downto 1;
+                 if %subst(kbrchs: blk: 1) = *blank;
                     leave;
                  endif;
              endfor;
-             br@ = %scan(' ': @brchs: @csc - 1);
-             if bl@ > 0 and br@ > 0;
-                if curRrn = @csr - 3 + topRrn - 1 and curCol = bl@ + 1;
-                   selObj = @root;
+             brk = %scan(' ': kbrchs: csc§ - 1);
+             if blk > 0 and brk > 0;
+                if curRrn = csr§ - 3 + topRrn - 1 and curCol = blk + 1;
+                   selObj = kroot;
                    curRrn = topRrn;
                    curCol = 0;
                 else;
-                   selObj = %subst(@brchs: bl@ + 1: br@ - bl@ - 1);
+                   selObj = %subst(kbrchs: blk + 1: brk - blk - 1);
                    if %scan(',': selObj) > 0;
                       selObj = %subst(selObj: 1: %scan(',': selObj) - 1);
                    endif;
-                   %subst(@brchs: bl@: 1) = x'21';
-                   %subst(@brchs: br@: 1) = x'20';
-                   update @tree;
-                   curRrn = @csr - 3 + topRrn - 1;
-                   curCol = bl@ + 1;
+                   %subst(kbrchs: blk: 1) = x'21';
+                   %subst(kbrchs: brk: 1) = x'20';
+                   update ktree;
+                   curRrn = csr§ - 3 + topRrn - 1;
+                   curCol = blk + 1;
                 endif;
              endif;
           endif;
        endsr;
 
        begsr ToFind;
-          if selObj = @root;
-             callp GetInp(@csr: @csc: 'Find:');
-             if @input = *blank;
-                @msg = 'Find what?';
+          if selObj = kroot;
+             callp GetInp(csr§: csc§: 'Find:');
+             if kinput = *blank;
+                kmsg = 'Find what?';
                 return;
              endif;
           endif;
@@ -1203,31 +1203,31 @@
                     topRrn = 0;
                     curRrn = 1;
                  else;
-                    @msg = 'Object not found.';
+                    kmsg = 'Object not found.';
                     return;
                  endif;
               endif;
 
-              chain curRrn @tree;
+              chain curRrn ktree;
 
-              if selObj = @root;
-                 curCol = %scan(%trim(@input): @brchs: curCol + 1);
+              if selObj = kroot;
+                 curCol = %scan(%trim(kinput): kbrchs: curCol + 1);
               else;
-                 curCol = %scan(%trim(selObj): @brchs: curCol + 1);
+                 curCol = %scan(%trim(selObj): kbrchs: curCol + 1);
               endif;
 
-              if curCol > 1 and %subst(@brchs: curCol - 1: 1) = ' ';
-                 if selObj = @root;
-                    selObj = @input;
+              if curCol > 1 and %subst(kbrchs: curCol - 1: 1) = ' ';
+                 if selObj = kroot;
+                    selObj = kinput;
                  endif;
 
                  if %scan(',': selObj) > 0;
                     selObj = %subst(selObj: 1: %scan(',': selObj) - 1);
                  endif;
 
-                 %subst(@brchs: curCol - 1: 1) = x'21';
-                 %subst(@brchs: %scan(' ': @brchs: curCol): 1) = x'20';
-                 update @tree;
+                 %subst(kbrchs: curCol - 1: 1) = x'21';
+                 %subst(kbrchs: %scan(' ': kbrchs: curCol): 1) = x'20';
+                 update ktree;
 
                  if topRrn = 0;
                     topRrn = 1;
@@ -1236,7 +1236,7 @@
                      topRrn = topRrn + 20;
                  enddo;
 
-                 @csrp = topRrn;
+                 kcsrp = topRrn;
                  leave;
               endif;
 
@@ -1245,19 +1245,19 @@
        endsr;
 
        begsr ResetScreen;
-          topRrn = @csrp;
+          topRrn = kcsrp;
           if curCol > 0 and curRrn > 0 and curRrn <= totRrn;
-             chain curRrn @tree;
-             for bl@ = curCol downto 1;
-                 if %subst(@brchs: bl@: 1) = x'21';
+             chain curRrn ktree;
+             for blk = curCol downto 1;
+                 if %subst(kbrchs: blk: 1) = x'21';
                     leave;
                  endif;
              endfor;
-             br@ = %scan(x'20': @brchs: curCol);
-             if bl@ > 0 and br@ > 0;
-                %subst(@brchs: bl@: 1) = *blank;
-                %subst(@brchs: br@: 1) = *blank;
-                update @tree;
+             brk = %scan(x'20': kbrchs: curCol);
+             if blk > 0 and brk > 0;
+                %subst(kbrchs: blk: 1) = *blank;
+                %subst(kbrchs: brk: 1) = *blank;
+                update ktree;
              else;
                 curRrn = topRrn;
                 curCol = 0;
@@ -1274,23 +1274,23 @@
      d arrSchIn        s             10    dim(9999) static inz
      d csrrow          s              4b 0 inz
      d csrcol          s              4b 0 inz
-     d r@              s              4b 0
-     d c@              s              4b 0
+     d rk              s              4b 0
+     d ck              s              4b 0
      d clickOnLf       s             10    inz
       /free
 
        if phase = 'INZ';
-          clear @sbxc;
-          @sbxstyle = 1;
-          @sbxcases = 0;
+          clear ksbxc;
+          ksbxstyle = 1;
+          ksbxcases = 0;
 
           *in37 = *on;
-          write @sbxc;
+          write ksbxc;
           *in37 = *off;
           exsr EmptyBox;
 
           clear arrSchIn;
-          @msg = 'Click or Enter on names to create "Search in" list. Press F1 +
+          kmsg = 'Click or Enter on names to create "Search in" list. Press F1 +
                   to start, F12 to cancel.';
           return *on;
        endif;
@@ -1300,22 +1300,22 @@
        endif;
 
        if phase = 'CFM';
-          if @sbxfor = *blank;
-             @msg = '"Search for" needed.';
+          if ksbxfor = *blank;
+             kmsg = '"Search for" needed.';
              return *on;
           endif;
 
-          for rrnb = 1 to @sbxsz;
-              chain rrnb @sbx;
-              if @sbxpfm = *blank;
-                 @msg = '"Search in" list needed.';
+          for rrnb = 1 to ksbxsz;
+              chain rrnb ksbx;
+              if ksbxpfm = *blank;
+                 kmsg = '"Search in" list needed.';
                  return *on;
               endif;
-              SearchFor(@sbxfor: @sbxslb: @sbxspf: @sbxpfm:
-                        @sbxstyle: @sbxcases);
+              SearchFor(ksbxfor: ksbxslb: ksbxspf: ksbxpfm:
+                        ksbxstyle: ksbxcases);
           endfor;
 
-          if @sbxstyle = 2;
+          if ksbxstyle = 2;
              SearchFor();
           endif;
           return *off;
@@ -1324,53 +1324,53 @@
        if phase = 'SEL';
           exsr LocateCursor;
           if csrrow = 0 and csrcol = 0;     //invalid click
-             @msg = 'Press F1 to start, F12 to cancel.';
+             kmsg = 'Press F1 to start, F12 to cancel.';
              return *on;
           endif;
 
           if csrrow = 0;                    //click on root
-             if @roott = '*PGM';
+             if kroott = '*PGM';
                 exsr OnCursor;
-             elseif @roott = '*FILE';
+             elseif kroott = '*FILE';
                 csrrow = 1;                 //lookup 1st&2nd level
              else;
-                @msg = 'The root is not a file or a program.';
+                kmsg = 'The root is not a file or a program.';
                 return *on;                 //root no good for search
              endif;
           endif;
 
           if csrcol <= 2;                   //on root *FILE or 1st level
-             c@ = 0;
+             ck = 0;
 
-             for r@ = csrrow;
-                 if csrcol = 1 and arrTree(r@) = *blank or                     //click on root
-                    csrcol = 2 and r@ > csrrow and                             //click on 1st level
-                    %subst(arrTree(r@): 2: 10) <> clickOnLf;
+             for rk = csrrow;
+                 if csrcol = 1 and arrTree(rk) = *blank or
+                    csrcol = 2 and rk > csrrow and
+                    %subst(arrTree(rk): 2: 10) <> clickOnLf;
                     leave;
                  endif;
 
-                 if c@ = 0;
-                    c@ = %scan(',': arrTree(r@));             //find usage
-                    if c@ = 0 and csrcol = 1;             //click on root *FILE, no usage, look next
+                 if ck = 0;
+                    ck = %scan(',': arrTree(rk));             //find usage
+                    if ck = 0 and csrcol = 1;             //click on root *FILE,
                        iter;
                     endif;
 
-                    if c@ = 0 and csrcol = 2 or                //click on 1st level
-                       c@ > 0 and c@ < %scan(' ': arrTree(r@): csrcol);    //w/ usage itself
-                       exsr OnCursor;                          //1st level not file
+                    if ck = 0 and csrcol = 2 or                //click on 1st le
+                       ck > 0 and ck < %scan(' ': arrTree(rk): csrcol);    //w/
+                       exsr OnCursor;                          //1st level not f
                     endif;
-                                                       //c@ > 0;
-                    if csrcol = 2 and r@ = csrrow;
-                       clickOnLf = %subst(arrTree(r@): 2: 10);
+                                                       //ck > 0;
+                    if csrcol = 2 and rk = csrrow;
+                       clickOnLf = %subst(arrTree(rk): 2: 10);
                     endif;
 
-                    dou %subst(arrTree(r@): c@: 1) = *blank;
-                        c@ = c@ - 1;
+                    dou %subst(arrTree(rk): ck: 1) = *blank;
+                        ck = ck - 1;
                     enddo;
-                    c@ = c@ + 1;
+                    ck = ck + 1;
                  endif;
 
-                 if %subst(arrTree(r@): c@: 1) = *blank;
+                 if %subst(arrTree(rk): ck: 1) = *blank;
                     iter;
                  endif;
 
@@ -1380,10 +1380,10 @@
              if rrnb = 0;
                 exsr EmptyBox;
              else;
-                @sbxsz = rrnb;
+                ksbxsz = rrnb;
              endif;
 
-             @msg = 'Press F1 to start, F12 to cancel.';
+             kmsg = 'Press F1 to start, F12 to cancel.';
              return *on;
 
           else;                             //on 2nd and above level
@@ -1393,24 +1393,24 @@
 
        begsr EmptyBox;
           rrnb = 1;
-          clear @sbx;
-          write @sbx;
-          @sbxcs = rrnb;
-          @sbxsz = 1;
+          clear ksbx;
+          write ksbx;
+          ksbxcs = rrnb;
+          ksbxsz = 1;
        endsr;
 
        begsr LocateCursor;
-          if @csr = 1 and @csc >= 2 and @csc <= 11 and
-             @csc <= %scan(' ': @root);                  //click on root
+          if csr§ = 1 and csc§ >= 2 and csc§ <= 11 and
+             csc§ <= %scan(' ': kroot);                  //click on root
              csrcol = 1;
 
-          elseif @csr > 3 and @csc >= 3 and @csc < 114;
-             csrrow = @csr - 3 + @csrp - 1;
-             csrcol = @csc - 1;
+          elseif csr§ > 3 and csc§ >= 3 and csc§ < 114;
+             csrrow = csr§ - 3 + kcsrp - 1;
+             csrcol = csc§ - 1;
              dow %subst(arrTree(csrrow): csrcol: 1) <> *blank;
                  csrcol = csrcol - 1;
              enddo;
-             if csrcol = @csc - 1;
+             if csrcol = csc§ - 1;
                 csrrow = 0;
                 csrcol = 0;
              else;
@@ -1421,15 +1421,15 @@
 
        begsr OnCursor;
           if csrrow = 0;          //root
-             @sbxsfr = @root;
+             ksbxsfr = kroot;
           elseif %scan(',': arrTree(csrrow): csrcol) > csrcol;
-             @sbxsfr = %subst(arrTree(csrrow): csrcol:
+             ksbxsfr = %subst(arrTree(csrrow): csrcol:
                              %scan(',': arrTree(csrrow): csrcol) - csrcol);
           elseif %scan(' ': arrTree(csrrow): csrcol) > csrcol;
-             @sbxsfr = %subst(arrTree(csrrow): csrcol:
+             ksbxsfr = %subst(arrTree(csrrow): csrcol:
                              %scan(' ': arrTree(csrrow): csrcol) - csrcol);
           else;
-             @sbxsfr = %subst(arrTree(csrrow): csrcol: 10);
+             ksbxsfr = %subst(arrTree(csrrow): csrcol: 10);
           endif;
 
           exsr AddSbx;
@@ -1437,16 +1437,16 @@
           if rrnb = 0;
              exsr EmptyBox;
           else;
-             @sbxsz = rrnb;
+             ksbxsz = rrnb;
           endif;
-          @msg = 'Press F1 to start, F12 to cancel.';
+          kmsg = 'Press F1 to start, F12 to cancel.';
           return *on;
        endsr;
 
        begsr OnRowCol;
-          if %scan(',': arrTree(r@): c@) > c@;
-             @sbxsfr = %subst(arrTree(r@): c@:
-                              %scan(',': arrTree(r@): c@) - c@);
+          if %scan(',': arrTree(rk): ck) > ck;
+             ksbxsfr = %subst(arrTree(rk): ck:
+                              %scan(',': arrTree(rk): ck) - ck);
           endif;
 
           exsr AddSbx;
@@ -1455,31 +1455,31 @@
        begsr AddSbx;
           if rrnb = 1 and arrSchIn(1) = *blank;
              *in37 = *on;
-             write @sbxc;
+             write ksbxc;
              *in37 = *off;
              rrnb = 0;
           endif;
 
-          if %lookup(@sbxsfr: arrSchIn) = 0;
-             if @sbxsfr = @root;
-                @sbxpfm = @roott;
-                @sbxslb = @rootl;
+          if %lookup(ksbxsfr: arrSchIn) = 0;
+             if ksbxsfr = kroot;
+                ksbxpfm = kroott;
+                ksbxslb = krootl;
              else;
-                @sbxpfm = GetObjType(@sbxslb: @sbxsfr: @csr: @csc + 10);     //type=..(olib:o:x:y)
+                ksbxpfm = GetObjType(ksbxslb: ksbxsfr: csr§: csc§ + 10);     //t
              endif;
 
-             if @sbxpfm = '*PGM' or @sbxpfm = '*SRVPGM';
-                @sbxpfm = SelModule(@csr: @csc + 10:
-                                    @sbxpfm: @sbxsfr + @sbxslb:
-                                    @sbxslb: @sbxspf);     //pfm=..(x:y:otype:o+olib:slib:spf)
+             if ksbxpfm = '*PGM' or ksbxpfm = '*SRVPGM';
+                ksbxpfm = SelModule(csr§: csc§ + 10:
+                                    ksbxpfm: ksbxsfr + ksbxslb:
+                                    ksbxslb: ksbxspf);     //pfm=..(x:y:otype:o+
 
-                if @sbxpfm <> *blank;
-                   MappingSrc(@sbxslb);
+                if ksbxpfm <> *blank;
+                   MappingSrc(ksbxslb);
 
                    rrnb = rrnb + 1;
-                   arrSchIn(rrnb) = @sbxsfr;
-                   write @sbx;
-                   @sbxcs = rrnb;
+                   arrSchIn(rrnb) = ksbxsfr;
+                   write ksbx;
+                   ksbxcs = rrnb;
                 endif;
              endif;
           endif;
@@ -1490,7 +1490,7 @@
 
      P SearchFor       b
      d SearchFor       pi
-     d  string                             like(@sbxfor) value options(*nopass)
+     d  string                             like(ksbxfor) value options(*nopass)
      d  pflib                        10    value options(*nopass)
      d  pf                           10    value options(*nopass)
      d  pfm                          10    value options(*nopass)
@@ -1504,15 +1504,15 @@
        if %parms = 0;
           if xExeCmd('DSPPFM FILE(QTEMP/' + %trim(psds.prc_name) + ')')
              <> *blank;
-             @msg = 'Collect search result error.';
+             kmsg = 'Collect search result error.';
              return;
           endif;
 
-          GetInp(@csr: @csc: 'Save?');
-          if @input = 'YES' and
+          GetInp(csr§: csc§: 'Save?');
+          if kinput = 'YES' and
              xExeCmd('CPYF FROMFILE(QTEMP/' + %trim(psds.prc_name) + ') +
                            TOFILE(*PRINT)') <> *blank;
-             @msg = 'Save collected search result error.';
+             kmsg = 'Save collected search result error.';
              return;
           endif;
 
@@ -1547,7 +1547,7 @@
                               TOFILE(QTEMP/' + %trim(psds.prc_name) + ') +
                               SPLNBR(' + %char(splfAttr.splfNbr) + ') +
                               MBROPT(*ADD)') <> *blank;
-             @msg = 'Collect search result error.';
+             kmsg = 'Collect search result error.';
              return;
           endif;
 

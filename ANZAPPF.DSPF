@@ -6,21 +6,21 @@
      A                                      HELP
      A                                      HLPPNLGRP(ANZAPPR QTEMP/ANZAPPH)
      A                                      HLPTITLE('ANZAPP')
-     A          R @MNUBR
+     A          R KMNUBR
      A*%%TS  SD  20020503  161338  KALA        REL-V4R4M0  5769-PW1
      A                                      MNUBAR
      A                                      MNUBARDSP
      A                                      MNUBARSW
      A                                      MNUCNL
      A                                      OVERLAY
-     A            @MNBFLD        2Y 0B  1  2MNUBARCHC(1 @PULLD1 'File')
-     A                                      MNUBARCHC(2 @PULLD2 'X-ref')
-     A                                      MNUBARCHC(3 @PULLD3 'Help')
-     A          R @PULLD1                   PULLDOWN
-     A                                      RTNCSRLOC(*WINDOW &@CX1 &@CY1)
-     A            @CX1           3S 0H
-     A            @CY1           3S 0H
-     A            @FILE          2Y 0B  1  1SNGCHCFLD(*AUTOSLT)
+     A            KMNBFLD        2Y 0B  1  2MNUBARCHC(1 KPULLD1 'File')
+     A                                      MNUBARCHC(2 KPULLD2 'X-ref')
+     A                                      MNUBARCHC(3 KPULLD3 'Help')
+     A          R KPULLD1                   PULLDOWN
+     A                                      RTNCSRLOC(*WINDOW &KCX1 &KCY1)
+     A            KCX1           3S 0H
+     A            KCY1           3S 0H
+     A            KFILE          2Y 0B  1  1SNGCHCFLD(*AUTOSLT)
      A                                      CHOICE(1 'New')
      A                                      CHOICE(2 'Open')
      A                                      CHOICE(11 'Renew')
@@ -28,62 +28,62 @@
      A                                      CHOICE(22 'MapSrcLib')
      A                                      CHOICE(31 'FileUsage')
      A                                      CHOICE(90 'Exit')
-     A          R @PULLD2                   PULLDOWN
-     A                                      RTNCSRLOC(*WINDOW &@CX2 &@CY2)
-     A            @CX2           3S 0H
-     A            @CY2           3S 0H
-     A            @LINK          2Y 0B  1  1SNGCHCFLD(*AUTOSLT)
+     A          R KPULLD2                   PULLDOWN
+     A                                      RTNCSRLOC(*WINDOW &KCX2 &KCY2)
+     A            KCX2           3S 0H
+     A            KCY2           3S 0H
+     A            KLINK          2Y 0B  1  1SNGCHCFLD(*AUTOSLT)
      A                                      CHOICE(1 'Obj Linked')
      A                                      CHOICE(2 'Obj Refered')
-     A          R @PULLD3                   PULLDOWN
-     A                                      RTNCSRLOC(*WINDOW &@CX3 &@CY3)
-     A            @CX3           3S 0H
-     A            @CY3           3S 0H
-     A            @ABOUT         2Y 0B  1  1SNGCHCFLD(*AUTOSLT)
+     A          R KPULLD3                   PULLDOWN
+     A                                      RTNCSRLOC(*WINDOW &KCX3 &KCY3)
+     A            KCX3           3S 0H
+     A            KCY3           3S 0H
+     A            KABOUT         2Y 0B  1  1SNGCHCFLD(*AUTOSLT)
      A                                      CHOICE(1 'User guide')
      A                                      CHOICE(2 'About')
-     A          R @ABTWND
+     A          R KABTWND
      A*%%TS  SD  20021108  104848  KALA        REL-V5R1M0  5722-WDS
-     A                                      WINDOW(&@AX &@AY 2 18 *NOMSGLIN)
+     A                                      WINDOW(&KAX &KAY 2 18 *NOMSGLIN)
      A                                      OVERLAY
      A                                      PROTECT
-     A            @AX            2S 0P
-     A            @AY            3S 0P
+     A            KAX            2S 0P
+     A            KAY            3S 0P
      A                                  1  1'Owner: Kala'
      A                                  2  1'Copyleft Reserved'
-     A          R @INPWND
+     A          R KINPWND
      A*%%TS  SD  20020710  142445  KALA        REL-V4R4M0  5769-PW1
-     A                                      WINDOW(&@WX &@WY 2 18)
+     A                                      WINDOW(&KWX &KWY 2 18)
      A                                      OVERLAY
      A                                      PROTECT
-     A            @WX            2S 0P
-     A            @WY            3S 0P
-     A            @PROMPT        7   O  1  1COLOR(BLU)
-     A            @INPUT        10   I  1  9
-     A          R @CHCSF                    SFL
-     A            @SCCTL         1Y 0H      SFLCHCCTL
-     A            @CHCTX        20A  O  1  2
-     A          R @CHCSFC                   SFLCTL(@CHCSF)
+     A            KWX            2S 0P
+     A            KWY            3S 0P
+     A            KPROMPT        7   O  1  1COLOR(BLU)
+     A            KINPUT        10   I  1  9
+     A          R KCHCSF                    SFL
+     A            KSCCTL         1Y 0H      SFLCHCCTL
+     A            KCHCTX        20A  O  1  2
+     A          R KCHCSFC                   SFLCTL(KCHCSF)
      A*%%TS  SD  20021105  090122  KALA        REL-V5R1M0  5722-WDS
      A                                      SFLPAG(0006)
-     A                                      WINDOW(&@OX &@OY 7 26)
-     A                                      WDWTITLE((*TEXT &@TITL))
+     A                                      WINDOW(&KOX &KOY 7 26)
+     A                                      WDWTITLE((*TEXT &KTITL))
      A                                      SFLSNGCHC
      A  27                                  SFLCLR
      A N27                                  SFLDSP
      A N27                                  SFLDSPCTL
-     A                                      SFLSIZ(&@CHCS)
+     A                                      SFLSIZ(&KCHCS)
      A  28                                  SFLEND(*SCRBAR *SCRBAR)
      A                                      OVERLAY
      A                                      PROTECT
-     A            @OX            2S 0P
-     A            @OY            3S 0P
-     A            @CHCS          5S 0P
-     A            @TITL         14A  P
-     A          R @TREE                     SFL
+     A            KOX            2S 0P
+     A            KOY            3S 0P
+     A            KCHCS          5S 0P
+     A            KTITL         14A  P
+     A          R KTREE                     SFL
      A*%%TS  SD  20020607  142304  KALA        REL-V4R4M0  5769-PW1
-     A            @BRCHS       128A  O  4  2DSPATR(PC)
-     A          R @TREEC                    SFLCTL(@TREE)
+     A            KBRCHS       128A  O  4  2DSPATR(PC)
+     A          R KTREEC                    SFLCTL(KTREE)
      A*%%TS  SD  20030801  144905  KALA        REL-V5R1M0  5722-WDS
      A                                      SFLSIZ(9999)
      A                                      SFLPAG(0022)
@@ -101,11 +101,11 @@
      A                                      SFLDSPCTL
      A  91                                  SFLCLR
      A  98                                  SFLEND(*SCRBAR *SCRBAR)
-     A            @CSRG          5S 0H      SFLSCROLL
-     A            @CSRP          4S 0H      SFLRCDNBR(*TOP)
-     A            @ROOT         10A  O  1  2COLOR(WHT)
-     A            @ROOTL        10A  O  1 13COLOR(WHT)
-     A            @PSBTFD        2Y 0B  1 40PSHBTNFLD((*NUMCOL 5))
+     A            KCSRG          5S 0H      SFLSCROLL
+     A            KCSRP          4S 0H      SFLRCDNBR(*TOP)
+     A            KROOT         10A  O  1  2COLOR(WHT)
+     A            KROOTL        10A  O  1 13COLOR(WHT)
+     A            KPSBTFD        2Y 0B  1 40PSHBTNFLD((*NUMCOL 5))
      A                                      PSHBTNCHC(1 'LEAVE(F12)' CA12)
      A                                      PSHBTNCHC(2 'NEW(F5)' CA05)
      A                                      PSHBTNCHC(3 'FIND(F16)' CA16)
@@ -118,19 +118,19 @@
      A                                      PSHBTNCHC(10 'SEARCH(F17)' CA17)
      A                                  2  2'(Enter to Refresh ruler)'
      A                                      COLOR(BLU)
-     A            @FRLSP       128A  O  3  2COLOR(WHT)
-     A            @ROOTT        10A  O  1 24COLOR(WHT)
-     A          R @MSGL
+     A            KFRLSP       128A  O  3  2COLOR(WHT)
+     A            KROOTT        10A  O  1 24COLOR(WHT)
+     A          R KMSGL
      A                                      OVERLAY
      A*%%TS  SD  20020503  164829  KALA        REL-V4R4M0  5769-PW1
-     A            @MSG         131   O 26  2
-     A          R @SBX                      SFL
+     A            KMSG         131   O 26  2
+     A          R KSBX                      SFL
      A*%%TS  SD  20030801  164414  KALA        REL-V5R1M0  5722-WDS
-     A            @SBXSFR       10A  O 11  2
-     A            @SBXSLB       10A  H
-     A            @SBXSPF       10A  H
-     A            @SBXPFM       10A  H
-     A          R @SBXC                     SFLCTL(@SBX)
+     A            KSBXSFR       10A  O 11  2
+     A            KSBXSLB       10A  H
+     A            KSBXSPF       10A  H
+     A            KSBXPFM       10A  H
+     A          R KSBXC                     SFLCTL(KSBX)
      A*%%TS  SD  20030801  164414  KALA        REL-V5R1M0  5722-WDS
      A                                      SFLPAG(0012)
      A                                      WINDOW(3 110 22 18 *NOMSGLIN -
@@ -144,18 +144,18 @@
      A N37                                  SFLDSPCTL
      A                                      OVERLAY
      A                                      PROTECT
-     A                                      SFLSIZ(&@SBXSZ)
-     A            @SBXSZ         5S 0P
-     A            @SBXCS         4S 0H      SFLRCDNBR
+     A                                      SFLSIZ(&KSBXSZ)
+     A            KSBXSZ         5S 0P
+     A            KSBXCS         4S 0H      SFLRCDNBR
      A                                  4  1'Search mode'
      A                                      COLOR(WHT)
-     A            @SBXSTYLE      2Y 0B  5  1SNGCHCFLD
+     A            KSBXSTYLE      2Y 0B  5  1SNGCHCFLD
      A                                      CHOICE(1 'Show each')
      A                                      CHOICE(2 'Show all')
-     A            @SBXCASES      2Y 0B  8  1SNGCHCFLD
+     A            KSBXCASES      2Y 0B  8  1SNGCHCFLD
      A                                      CHOICE(1 'Case sense?')
      A                                 10  1'Search in'
      A                                      COLOR(WHT)
      A                                  1  1'Search for'
      A                                      COLOR(WHT)
-     A            @SBXFOR       16   B  2  2CHECK(LC)
+     A            KSBXFOR       16   B  2  2CHECK(LC)
