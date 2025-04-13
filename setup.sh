@@ -31,7 +31,8 @@ if [ -f "$file" ]; then
     # Read the file line by line
     while IFS= read -r line
     do
-        #echo "$line"
+        #echo "$line" - cat file.list to find the actual position of the file name
+        #and change below
         file_name="${line:39:21}"
         #echo "file_name: $file_name"
         base_name="${file_name%.*}"
@@ -39,7 +40,7 @@ if [ -f "$file" ]; then
         mbr_type="${file_name##*.}"
         #echo "mbr_type: $mbr_type"
         system "CPYFRMSTMF FROMSTMF('$source_dir/$file_name') \
-           TOMBR('/QSYS.LIB/$TARGET_LIBRARY.LIB/$app_name.FILE/$base_name.mbr')
+           TOMBR('/QSYS.LIB/$TARGET_LIBRARY.LIB/$app_name.FILE/$base_name.mbr') \
            MBROPT(*REPLACE)"
         if [ "$mbr_type" != "$base_name" ]; then
            system "CHGPFM FILE($TARGET_LIBRARY/$app_name) MBR($base_name) \
